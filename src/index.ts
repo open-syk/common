@@ -1,1 +1,6 @@
-console.log('Hello World');
+/*
+ * Syk @common
+ * MIT Licensed
+ */
+
+export * from './errors';
