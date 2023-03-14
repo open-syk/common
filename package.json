@@ -2,7 +2,6 @@
   "name": "@open-syk/common",
   "version": "0.1.0",
   "description": "Syk Common Library",
-  "main": "src/index.ts",
   "repository": "git@github.com:open-syk/common.git",
   "author": "Luis Miguel Báez",
   "tags": ["common"],
