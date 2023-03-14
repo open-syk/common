@@ -4,7 +4,8 @@
   "description": "Syk Common Library",
   "main": "src/index.ts",
   "repository": "git@github.com:open-syk/common.git",
-  "author": "Luis Miguel Báez <es.luismiguelbaez@gmail.com>",
+  "author": "Luis Miguel Báez",
+  "tags": ["common"],
   "license": "MIT",
   "scripts": {
     "linter-fix": "npm run lint --fix && prettier --write \"src/**/*.ts\"",
@@ -32,5 +33,8 @@
     "maskdata": "^1.2.0",
     "verror": "^1.10.1",
     "winston": "^3.8.2"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
