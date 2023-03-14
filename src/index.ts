@@ -1,5 +1,5 @@
 /*
- * Syk @common
+ * Open Syk @common
  * MIT Licensed
  */
 
