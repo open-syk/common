@@ -1,3 +1,8 @@
+/*
+ * Open Syk @common
+ * MIT Licensed
+ */
+
 export function orThrowError(errorType: any) {
   return function (
     target: any,
