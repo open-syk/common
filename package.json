@@ -1,6 +1,6 @@
 {
   "name": "@open-syk/common",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Syk Common Library",
   "repository": "git@github.com:open-syk/common.git",
   "author": "Luis Miguel Báez",
