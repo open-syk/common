@@ -1,0 +1,38 @@
+name: 'build-test'
+on: # rebuild any PRs and main branch changes
+  pull_request:
+  push:
+    branches:
+      - main
+      - 'releases/*'
+
+jobs:
+  run-linters:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
+      - name: Create package-lock.json file
+        run: npm install
+
+      - name: Install Node.js dependencies
+        run: npm ci
+      
+      - name: Run linters
+        run: npm run linter
+
+  build: # make sure build/ci work properly
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
+      - name: Create package-lock.json file
+        run: npm install
+
+      - name: Install Node.js dependencies
+        run: npm ci
+      
+      - name: Run Test
+        run: npm run test
