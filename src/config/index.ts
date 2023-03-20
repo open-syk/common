@@ -17,9 +17,11 @@ export default class SykConfigSingleton {
   private wasCompleted: boolean;
   private data: any;
   private static instance: SykConfigSingleton;
+  private previousPath: string;
 
   private constructor() {
     this.wasCompleted = false;
+    this.previousPath = '';
   }
 
   public static getInstance(): SykConfigSingleton {
@@ -30,9 +32,10 @@ export default class SykConfigSingleton {
   }
 
   public run(pathFile: string): any {
-    if (this.wasCompleted) {
+    if (this.wasCompleted && pathFile === this.previousPath) {
       return this.data;
     }
+    this.previousPath = pathFile;
     this.wasCompleted = true;
     const pathFileEnv = getEnvPath(pathFile);
     nconf.argv().env({ separator: '__', parseValues: true, lowerCase: false });
