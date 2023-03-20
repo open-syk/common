@@ -44,8 +44,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "hooks": {
-    "precommit": "yarn run linter-fix"
   }
 }
