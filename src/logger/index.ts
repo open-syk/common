@@ -12,10 +12,16 @@ import { createLogger, format, transports } from 'winston';
 const { combine, timestamp, label, printf, colorize, json } = format;
 import maskData from 'maskdata';
 
-const logFormat = 'logfmt';
-const maxDepth = 3;
-const silent = false;
-const maskSymbol = '*';
+const LOG_FORMAT = process.env.LOG_FORMAT;
+const LOG_MAX_DEPTH = process.env.LOG_MAX_DEPTH;
+const LOG_SILENT = process.env.LOG_SILENT;
+const LOG_MASK_SYMBOL = process.env.LOG_MASK_SYMBOL;
+const LOG_LEVEL = process.env.LOG_LEVEL;
+
+const logFormat = (LOG_FORMAT ?? 'logfmt') as string;
+const maxDepth = (LOG_MAX_DEPTH ? parseInt(LOG_MAX_DEPTH) : 3) as number;
+const silent = (LOG_SILENT || false) as boolean;
+const maskSymbol = (LOG_MASK_SYMBOL ?? '*') as string;
 
 export const formats = (tag: string) => {
   return {
@@ -59,7 +65,7 @@ interface Logger {
 }
 
 const logger = (tag: string, loggerLevel?: string): Logger => {
-  const level = loggerLevel ?? 'debug';
+  const level = (loggerLevel ?? LOG_LEVEL ?? 'debug') as string;
   const taggedFormats = formats(tag);
   const format =
     logFormat === 'logfmt' ? taggedFormats.logfmt : taggedFormats.json;
