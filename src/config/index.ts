@@ -1,5 +1,5 @@
+import * as dotenv from 'dotenv';
 import { existsSync } from 'fs';
-import nconf from 'nconf';
 import * as path from 'path';
 
 export function getEnvPath(dest: string): string {
@@ -13,9 +13,8 @@ export function getEnvPath(dest: string): string {
   return filePath;
 }
 
-export default class SykConfigSingleton {
+export class SykConfigSingleton {
   private wasCompleted: boolean;
-  private data: any;
   private static instance: SykConfigSingleton;
   private previousPath: string;
 
@@ -31,17 +30,14 @@ export default class SykConfigSingleton {
     return SykConfigSingleton.instance;
   }
 
-  public run(pathFile: string): any {
+  public run(pathFile: string): void {
     if (this.wasCompleted && pathFile === this.previousPath) {
-      return this.data;
+      return;
     }
     this.previousPath = pathFile;
     this.wasCompleted = true;
     const pathFileEnv = getEnvPath(pathFile);
-    nconf.argv().env({ separator: '__', parseValues: true, lowerCase: false });
-    nconf.defaults({ conf: path.resolve(pathFileEnv) });
-    nconf.file(nconf.get('conf'));
-    this.data = nconf;
-    return this.data;
+
+    dotenv.config({ path: pathFileEnv });
   }
 }

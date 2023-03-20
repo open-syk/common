@@ -37,8 +37,8 @@ jest.mock('winston', () => {
   };
 });
 
-describe('Logger', () => {
-  const logger = Logger('test');
+describe('@open-syk/logger', () => {
+  const logger = Logger('open-syk');
   const data = {
     name: 'ditto',
     order: 214,
