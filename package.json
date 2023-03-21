@@ -1,6 +1,6 @@
 {
   "name": "@open-syk/common",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Syk Common Library",
   "repository": "git@github.com:open-syk/common.git",
   "author": "Luis Miguel Báez",
@@ -13,7 +13,7 @@
     "linter": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "prepare": "husky install",
     "test": "LOG_SILENT=true jest --coverage --logHeapUsage",
-    "build": "rm -rf ./dist && ./node_modules/typescript/bin/tsc"
+    "build": "rm -rf ./lib && ./node_modules/typescript/bin/tsc"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.20.2",
@@ -51,5 +51,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "exports": {
+    "./config": "./lib/src/config",
+    "./db/typeorm": "./lib/src/db/typeorm",
+    "./errors": "./lib/src/errors",
+    "./logger": "./lib/src/logger"
   }
 }
