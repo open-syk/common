@@ -53,9 +53,9 @@
     "access": "public"
   },
   "exports": {
-    "./config": "./lib/src/config",
-    "./db/typeorm": "./lib/src/db/typeorm",
-    "./errors": "./lib/src/errors",
-    "./logger": "./lib/src/logger"
+    "./config": "./src/config",
+    "./db/typeorm": "./src/db/typeorm",
+    "./errors": "./src/errors",
+    "./logger": "./src/logger"
   }
 }
