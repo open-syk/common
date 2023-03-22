@@ -1,6 +1,6 @@
 {
   "name": "@open-syk/common",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Syk Common Library",
   "repository": "git@github.com:open-syk/common.git",
   "author": "Luis Miguel Báez",
@@ -13,7 +13,8 @@
     "linter": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "prepare": "husky install",
     "test": "LOG_SILENT=true jest --coverage --logHeapUsage",
-    "build": "rm -rf ./lib && ./node_modules/typescript/bin/tsc"
+    "build": "rm -rf ./lib && ./node_modules/typescript/bin/tsc",
+    "publish": "npm run build && cd lib && npm publish"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.20.2",
