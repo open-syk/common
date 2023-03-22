@@ -1,6 +1,6 @@
 {
   "name": "@open-syk/common",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Syk Common Library",
   "repository": "git@github.com:open-syk/common.git",
   "author": "Luis Miguel Báez",
@@ -51,23 +51,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "exports": {
-    "./config": {
-      "types": "./lib/src/config/index.d.ts",
-      "default": "./lib/src/config/index.js"
-    },
-    "./db/typeorm": {
-      "types": "./lib/src/db/typeorm/index.d.ts",
-      "default": "./lib/src/db/typeorm/index.js"
-    },
-    "./errors": {
-      "types": "./lib/src/errors/index.d.ts",
-      "default": "./lib/src/errors/index.js"
-    },
-    "./logger": {
-      "types": "./lib/src/logger/index.d.ts",
-      "default": "./lib/src/logger/index.js"
-    }
   }
 }
