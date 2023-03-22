@@ -53,9 +53,21 @@
     "access": "public"
   },
   "exports": {
-    "./config": "./src/config",
-    "./db/typeorm": "./src/db/typeorm",
-    "./errors": "./src/errors",
-    "./logger": "./src/logger"
+    "./config": {
+      "types": "./lib/src/config/index.d.ts",
+      "default": "./lib/src/config/index.js"
+    },
+    "./db/typeorm": {
+      "types": "./lib/src/db/typeorm/index.d.ts",
+      "default": "./lib/src/db/typeorm/index.js"
+    },
+    "./errors": {
+      "types": "./lib/src/errors/index.d.ts",
+      "default": "./lib/src/errors/index.js"
+    },
+    "./logger": {
+      "types": "./lib/src/logger/index.d.ts",
+      "default": "./lib/src/logger/index.js"
+    }
   }
 }
