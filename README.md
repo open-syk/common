@@ -11,7 +11,7 @@ import path from 'path';
 import { SykConfigSingleton } from '@open-syk/common/config';
 
 const config = SykConfigSingleton.getInstance();
-config.run(path.join(__dirname, 'dist/config/envs'));
+config.run(path.join(__dirname, 'lib/config/envs'));
 ```
 
 ### @open-syk/common/logger
