@@ -15,7 +15,7 @@
     "prepare": "husky install",
     "test": "LOG_SILENT=true jest --coverage --logHeapUsage",
     "build": "rm -rf ./lib && ./node_modules/typescript/bin/tsc && npm run copy-package",
-    "publish": "npm run build && cd lib && npm publish"
+    "publish": "npm run build && cd lib && npm pkg delete scripts.prepare && npm publish"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.20.2",
