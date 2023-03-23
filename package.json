@@ -9,13 +9,14 @@
   ],
   "license": "MIT",
   "scripts": {
-    "copy-package": "cp -rf package.json lib",
+    "build-copy-package": "cp -rf package.json lib && cp -rf README.md lib",
+    "build-clean-unnecessary-files": "rm -rf ./lib/tsconfig.tsbuildinfo",
+    "build": "rm -rf ./lib && ./node_modules/typescript/bin/tsc && npm run build-copy-package && npm run build-clean-unnecessary-files",
     "linter-fix": "npm run linter --fix && prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "linter": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "prepare": "husky install",
     "test": "LOG_SILENT=true jest --coverage --logHeapUsage",
-    "build": "rm -rf ./lib && ./node_modules/typescript/bin/tsc && npm run copy-package",
-    "publish": "npm run build && cd lib && npm pkg delete scripts.prepare && npm publish"
+    "publish": "cd lib && npm pkg delete scripts.prepare && npm publish"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.20.2",

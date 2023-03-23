@@ -10,14 +10,16 @@ Syk Common Library
 import path from 'path';
 import { SykConfigSingleton } from '@open-syk/common/config';
 
-const config = SykConfigSingleton.getInstance();
-config.run(path.join(__dirname, 'lib/config/envs'));
+SykConfigSingleton
+  .getInstance()
+  .run(path.join(__dirname, 'lib/config/envs'));
 ```
 
 ### @open-syk/common/logger
 
 ```typescript
-import logger from '@open-syk/common/logger';
+import Logger from '@open-syk/common/logger';
+const logger = Logger("test");
 
 const maskedFields = ['...']
 const data = {...}
@@ -36,13 +38,10 @@ const user = await onSession(dataSource, async (manager) => {
 
 // to create, update and delete records
 const userCreated = await onTransaction(dataSource, async (manager) => {
-  return this.userService.create(
-    manager,
-    {
-      email,
-      name
-    },
-  );
+  return this.userService.create(manager, {
+    email,
+    name
+  });
 });
 ```
 
