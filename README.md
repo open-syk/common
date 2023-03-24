@@ -11,8 +11,8 @@ The `@open-syk/common/config` package provides a configuration singleton that ca
 Example usage:
 
 ```typescript
-import path from 'path';
 import { SykConfigSingleton } from '@open-syk/common/config';
+import * as path from 'path';
 
 SykConfigSingleton
   .getInstance()
