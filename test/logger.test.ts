@@ -110,7 +110,7 @@ describe('@open-syk/logger', () => {
     const err = new Error('ERROR');
     const stacktrace = VError.fullStack(err);
     expectedData.name = '*'.repeat(data.name.length);
-    logger.error('ERROR', data, err, maskedFields);
+    logger.error('ERROR', err, data, maskedFields);
     expect(error).toHaveBeenCalled();
     expect(error).toHaveBeenCalledWith('ERROR', {
       data: expectedData,
