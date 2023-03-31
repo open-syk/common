@@ -11,10 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out Git repository
-        uses: actions/checkout@v2
-
-      - name: Create package-lock.json file
-        run: npm install
+        uses: actions/checkout@v3
 
       - name: Install Node.js dependencies
         run: npm ci
@@ -26,10 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out Git repository
-        uses: actions/checkout@v2
-
-      - name: Create package-lock.json file
-        run: npm install
+        uses: actions/checkout@v3
 
       - name: Install Node.js dependencies
         run: npm ci

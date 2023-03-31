@@ -58,8 +58,8 @@ interface Logger {
   info: (message: string, data?: any, maskedFields?: string[]) => void;
   error: (
     message: string,
-    data: any,
     err: any,
+    data?: any,
     maskedFields?: string[],
   ) => void;
 }
@@ -77,8 +77,8 @@ const logger = (tag: string, loggerLevel?: string): Logger => {
   });
   const error = (
     message: string,
-    data: any,
     err: Error,
+    data?: any,
     maskedFields?: string[],
   ) => {
     const stacktrace = VError.fullStack(err);
