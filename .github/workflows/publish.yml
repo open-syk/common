@@ -14,8 +14,8 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           # Defaults to the user or organization that owns the workflow file
           scope: '@open-syk'
-      - name: Create package-lock.json file
-        run: npm install
+      - name: Install Dependencies
+        run: npm ci
 
       - name: Build
         run: npm run build
