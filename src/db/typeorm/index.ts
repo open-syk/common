@@ -39,8 +39,9 @@ export const onTransaction = async <T>(
     const response = await callback(runner.manager);
     await runner.commitTransaction();
     return response;
-  } catch (err) {
+  } catch (error) {
     await runner.rollbackTransaction();
+    throw error;
   } finally {
     await runner.release();
   }
