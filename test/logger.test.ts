@@ -53,8 +53,7 @@ describe('@open-syk/logger', () => {
       },
       other: {
         home: {
-          front_default:
-            'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png',
+          front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png',
         },
       },
     },
@@ -86,9 +85,7 @@ describe('@open-syk/logger', () => {
     const maskedFields = ['sprites.dream_world.front_default'];
     const expectedData = Object.assign({}, data);
     logger.info('INFO', data, maskedFields);
-    expectedData.sprites.dream_world.front_default = '*'.repeat(
-      data.sprites.dream_world.front_default.length,
-    );
+    expectedData.sprites.dream_world.front_default = '*'.repeat(data.sprites.dream_world.front_default.length);
     expect(info).toHaveBeenCalled();
     expect(info).toHaveBeenCalledWith('INFO', { data: expectedData });
   });
@@ -96,9 +93,7 @@ describe('@open-syk/logger', () => {
   it('should mask the info data with depth 3', () => {
     const maskedFields = ['sprites.other.home.front_default'];
     const expectedData = Object.assign({}, data);
-    expectedData.sprites.other.home.front_default = '*'.repeat(
-      data.sprites.other.home.front_default.length,
-    );
+    expectedData.sprites.other.home.front_default = '*'.repeat(data.sprites.other.home.front_default.length);
     logger.info('INFO', data, maskedFields);
     expect(info).toHaveBeenCalled();
     expect(info).toHaveBeenCalledWith('INFO', { data: expectedData });
