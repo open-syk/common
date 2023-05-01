@@ -32,13 +32,9 @@ export const formats = (tag: string) => {
       printf((info) => {
         const { timestamp, label, level, message, ...data } = info;
         const logData = { ...data['data'], stacktrace: data['stacktrace'] };
-        Object.keys(logData).forEach(
-          (key) => logData[key] === undefined && delete logData[key],
-        );
+        Object.keys(logData).forEach((key) => logData[key] === undefined && delete logData[key]);
         const logOptions = { maxDepth };
-        return `[${timestamp}] ${message} level=${level} label=${label} ${logfmt.stringify(
-          flat(logData, logOptions),
-        )}`;
+        return `[${timestamp}] ${message} level=${level} label=${label} ${logfmt.stringify(flat(logData, logOptions))}`;
       }),
     ),
     json: combine(label({ label: tag }), timestamp(), json()),
@@ -56,31 +52,20 @@ const maskRequestData = (input: JSON, maskedFields: string[]) => {
 interface Logger {
   debug: (message: string, data?: any, maskedFields?: string[]) => void;
   info: (message: string, data?: any, maskedFields?: string[]) => void;
-  error: (
-    message: string,
-    err: any,
-    data?: any,
-    maskedFields?: string[],
-  ) => void;
+  error: (message: string, err: any, data?: any, maskedFields?: string[]) => void;
 }
 
 const logger = (tag: string, loggerLevel?: string): Logger => {
   const level = (loggerLevel ?? LOG_LEVEL ?? 'debug') as string;
   const taggedFormats = formats(tag);
-  const format =
-    logFormat === 'logfmt' ? taggedFormats.logfmt : taggedFormats.json;
+  const format = logFormat === 'logfmt' ? taggedFormats.logfmt : taggedFormats.json;
   const log = createLogger({
     level,
     format,
     transports: [new transports.Console()],
     silent,
   });
-  const error = (
-    message: string,
-    err: Error,
-    data?: any,
-    maskedFields?: string[],
-  ) => {
+  const error = (message: string, err: Error, data?: any, maskedFields?: string[]) => {
     const stacktrace = VError.fullStack(err);
     data = maskedFields ? maskRequestData(data, maskedFields) : data;
     log.error(message, { data, stacktrace });

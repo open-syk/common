@@ -32,9 +32,7 @@ export class FirebaseConfigSingleton {
     if (!FIREBASE_CREDENTIALS) {
       throw Error(OpenSykFirebaseErrorMessage.FIREBASE_CREDENTIALS_NOT_FOUND);
     }
-    const firebaseConfigEnv: Record<string, FirebaseConfigEnv> = JSON.parse(
-      FIREBASE_CREDENTIALS || '{}',
-    );
+    const firebaseConfigEnv: Record<string, FirebaseConfigEnv> = JSON.parse(FIREBASE_CREDENTIALS || '{}');
 
     const clientIds = Object.keys(firebaseConfigEnv) as Array<string>;
 
@@ -67,9 +65,7 @@ export class FirebaseAuth {
 
   public async signUp(clientId: string, uid: string, user: any) {
     try {
-      const admin = await this.firebaseAdmin.getFirebaseAdminByClientId(
-        clientId,
-      );
+      const admin = await this.firebaseAdmin.getFirebaseAdminByClientId(clientId);
       const { email, password, firstName, lastName } = user;
       const firebaseUser = await admin.auth().updateUser(uid, {
         email,
@@ -85,14 +81,9 @@ export class FirebaseAuth {
     }
   }
 
-  public async validateToken(
-    clientId: string,
-    accessToken: string,
-  ): Promise<DecodedIdToken> {
+  public async validateToken(clientId: string, accessToken: string): Promise<DecodedIdToken> {
     try {
-      const admin = await this.firebaseAdmin.getFirebaseAdminByClientId(
-        clientId,
-      );
+      const admin = await this.firebaseAdmin.getFirebaseAdminByClientId(clientId);
       return admin.auth().verifyIdToken(accessToken);
     } catch (error) {
       throw new Error(OpenSykFirebaseErrorMessage.INVALID_JWT_TOKEN);
@@ -101,9 +92,7 @@ export class FirebaseAuth {
 
   public async updateUser(clientId: string, uid: string, user: any) {
     try {
-      const admin = await this.firebaseAdmin.getFirebaseAdminByClientId(
-        clientId,
-      );
+      const admin = await this.firebaseAdmin.getFirebaseAdminByClientId(clientId);
       const firebaseUser = await admin.auth().updateUser(uid, { ...user });
       return firebaseUser.toJSON();
     } catch (error) {
@@ -113,9 +102,7 @@ export class FirebaseAuth {
 
   public async deleteUser(clientId: string, uid: string) {
     try {
-      const admin = await this.firebaseAdmin.getFirebaseAdminByClientId(
-        clientId,
-      );
+      const admin = await this.firebaseAdmin.getFirebaseAdminByClientId(clientId);
       return admin.auth().deleteUser(uid);
     } catch (error) {
       throw new Error(OpenSykFirebaseErrorMessage.DELETING_USER_ERROR);
