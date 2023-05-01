@@ -1,15 +1,9 @@
 import { DataSource, EntityManager } from 'typeorm';
 
 export interface TypeORMSession {
-  onSession: <T>(
-    dataSource: DataSource,
-    callback: (manager: EntityManager) => Promise<T>,
-  ) => Promise<T>;
+  onSession: <T>(dataSource: DataSource, callback: (manager: EntityManager) => Promise<T>) => Promise<T>;
 
-  onTransaction: <T>(
-    dataSource: DataSource,
-    callback: (manager: EntityManager) => Promise<T>,
-  ) => Promise<T>;
+  onTransaction: <T>(dataSource: DataSource, callback: (manager: EntityManager) => Promise<T>) => Promise<T>;
 }
 
 export const onSession = async <T>(
