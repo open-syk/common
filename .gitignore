@@ -107,3 +107,5 @@ lib
 
 # TernJS port file
 .tern-port
+
+!src/nestjs/cache/node-cache/*
