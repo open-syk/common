@@ -16,8 +16,7 @@
     "linter": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "prepare": "husky install",
     "test": "LOG_SILENT=true jest --coverage --logHeapUsage",
-    "publish": "cd lib && npm pkg delete scripts.prepare && npm publish",
-    "testing": "npm run build && node lib/lib/phone-number"
+    "publish": "cd lib && npm pkg delete scripts.prepare && npm publish"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.20.2",

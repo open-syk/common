@@ -1,31 +1,4 @@
-export enum PhoneNumberFormat {
-  E164 = 'E164',
-  INTERNATIONAL = 'INTERNATIONAL',
-  NATIONAL = 'NATIONAL',
-  RFC3966 = 'RFC3966',
-}
-
-export enum CountryCodeSource {
-  FROM_NUMBER_WITH_PLUS_SIGN = 1,
-  FROM_NUMBER_WITH_IDD = 5,
-  FROM_NUMBER_WITHOUT_PLUS_SIGN = 10,
-  FROM_DEFAULT_COUNTRY = 20,
-}
-
-export enum PhoneNumberType {
-  FIXED_LINE = 0,
-  MOBILE = 1,
-  FIXED_LINE_OR_MOBILE = 2,
-  TOLL_FREE = 3,
-  PREMIUM_RATE = 4,
-  SHARED_COST = 5,
-  VOIP = 6,
-  PERSONAL_NUMBER = 7,
-  PAGER = 8,
-  UAN = 9,
-  VOICEMAIL = 10,
-  UNKNOWN = -1,
-}
+export type PhoneNumber = libphonenumber.PhoneNumber;
 
 export enum ValidationResult {
   /** The number length matches that of valid numbers for this region. */
@@ -56,12 +29,11 @@ export enum ValidationResult {
    * this type at all for this region.
    */
   INVALID_LENGTH = 'INVALID_LENGTH',
+
+  INPUT_IS_NOT_A_PHONE_NUMBER = 'INPUT_IS_NOT_A_PHONE_NUMBER',
 }
 
-export enum MatchType {
-  EXACT_MATCH,
-  NO_MATCH,
-  NOT_A_NUMBER,
-  NSN_MATCH,
-  SHORT_NSN_MATCH,
+export interface ParseResponse {
+  phoneNumber?: PhoneNumber | null;
+  state: ValidationResult;
 }
